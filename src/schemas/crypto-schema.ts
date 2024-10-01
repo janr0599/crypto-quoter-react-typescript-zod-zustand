@@ -14,3 +14,8 @@ export const CryptoCurrenciesResponseSchema = z.array(
     }),
   })
 );
+
+export const pairSchema = z.object({
+  currency: z.string(),
+  cryptocurrency: z.string(),
+});
