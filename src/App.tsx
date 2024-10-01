@@ -1,3 +1,5 @@
+import CryptoSearchForm from "./components/CryptoSearchForm";
+
 function App() {
   return (
     <>
@@ -6,7 +8,9 @@ function App() {
           Cryptocurrency <span>Quoter</span>
         </h1>
 
-        <div className="content"></div>
+        <div className="content">
+          <CryptoSearchForm />
+        </div>
       </div>
     </>
   );

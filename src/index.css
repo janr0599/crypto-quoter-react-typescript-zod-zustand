@@ -22,13 +22,14 @@ body {
   background-size: cover;
   min-height: 93vh;
   font-family: "Outfit", system-ui;
+  font-size: 2rem;
 }
 
 .container {
   max-width: 60rem;
   width: 95%;
   margin: 0 auto;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .app-title {
@@ -50,4 +51,40 @@ body {
   background-color: var(--white);
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.form,
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form label {
+  color: var(--black);
+}
+
+.form select {
+  background-color: #ecebeb;
+  border: none;
+  padding: 1rem;
+  border-radius: 1rem;
+  font-size: 1.8rem;
+}
+
+.form [type="submit"] {
+  background-color: var(--primary);
+  color: var(--black);
+  border: none;
+  padding: 1rem;
+  font-weight: 900;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+  margin-top: 2rem;
+  border-radius: 1rem;
+}
+
+.form [type="submit"]:hover {
+  background-color: #51c99f;
 }
