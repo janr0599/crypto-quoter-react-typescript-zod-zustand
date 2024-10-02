@@ -12,6 +12,6 @@ export type CryptoCurrencies = z.infer<typeof CryptoCurrenciesResponseSchema>;
 
 export type Pair = z.infer<typeof pairSchema>;
 
-export type CryproCurrencyCurrentPrice = z.infer<
+export type CryptoCurrencyCurrentPrice = z.infer<
   typeof CryptoCurrencyCurrentPriceResponseSchema
 >;

@@ -1,12 +1,14 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
-import { CryproCurrencyCurrentPrice, CryptoCurrencies, Pair } from "./types";
+import { CryptoCurrencyCurrentPrice, CryptoCurrencies, Pair } from "./types";
 import { getCryptos, getCurrentCryptoPrice } from "./services/CryptoService";
 
 type CryptoStore = {
   cryptocurrencies: CryptoCurrencies;
   fetchCryptos: () => Promise<void>;
   fetchData: (pair: Pair) => Promise<void>;
+  cryptoCurrencyCurrentPriceInfo: CryptoCurrencyCurrentPrice;
+  loading: boolean;
 };
 
 export const useCryptoStore = create<CryptoStore>()(
@@ -21,8 +23,28 @@ export const useCryptoStore = create<CryptoStore>()(
       }));
     },
 
+    cryptoCurrencyCurrentPriceInfo: {
+      IMAGEURL: "",
+      PRICE: "",
+      HIGHDAY: "",
+      LOWDAY: "",
+      CHANGEPCT24HOUR: "",
+      CONVERSIONLASTUPDATE: "",
+    },
+
+    loading: false,
+
     fetchData: async (pair) => {
-      await getCurrentCryptoPrice(pair);
+      set(() => ({
+        loading: true,
+      }));
+
+      const cryptoCurrencyCurrentPriceInfo = await getCurrentCryptoPrice(pair);
+
+      set(() => ({
+        cryptoCurrencyCurrentPriceInfo,
+        loading: false,
+      }));
     },
   }))
 );
