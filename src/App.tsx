@@ -1,19 +1,14 @@
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import CryptoSearchForm from "./components/CryptoSearchForm";
 import { useCryptoStore } from "./store";
 import CurrentCryptoPriceInfo from "./components/CurrentCryptoPriceInfo";
 
 function App() {
-  const { fetchCryptos, cryptoCurrencyCurrentPriceInfo } = useCryptoStore();
+  const { fetchCryptos, hasPriceInfo } = useCryptoStore();
 
   useEffect(() => {
     fetchCryptos();
   }, []);
-
-  const hasPriceInfo = useMemo(
-    () => !Object.values(cryptoCurrencyCurrentPriceInfo).includes(""),
-    [cryptoCurrencyCurrentPriceInfo]
-  );
 
   return (
     <>
